@@ -14,7 +14,7 @@
             </thead>
             <tbody>
                 <tr v-for="hospital of hospitales" :key="hospital" :class="{select : hospital.idHospital === this.currentIdentificador}">
-                    <td v-on:click="selectIdentificador(hospital.idHospital)">
+                    <td v-on:click="selectIdentificador(hospital.idHospital)" class="pointer">
                         {{ hospital.idHospital }}
                     </td>
                     <td>{{ hospital.nombre }}</td>
@@ -88,5 +88,9 @@
 <style>
     .select{
         color: red;
+    }
+    .pointer:hover{
+        cursor: pointer;
+        color: yellow;
     }
 </style>

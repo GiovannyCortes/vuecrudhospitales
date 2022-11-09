@@ -27,6 +27,7 @@
 </template>
 
 <script>
+    import Swal from 'sweetalert2';
     import HospitalServices from '../services/HospitalesServices';
     const service = new HospitalServices();
     export default {
@@ -34,14 +35,18 @@
         methods : {
             findHospital() {
                 service.getHospital("/api/hospitales/", this.identificador).then((result) => {
-                    this.hospital = result;
+                    if (result == "") {
+                        Swal.fire('Hospital no encontrado');
+                    } else {
+                        this.hospital = result;
+                    }
                 });
             }
         },
         data() {
             return {
                 hospital : null,
-                identificador : 19
+                identificador : 0
             }
         }
     }
